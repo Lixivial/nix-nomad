@@ -34,7 +34,7 @@
       default = null;
     };
   });
-  _module.types.CsimountOptions = with lib; with config._module.types; with lib.types; submodule ({
+  _module.types.CsiMountOptions = with lib; with config._module.types; with lib.types; submodule ({
     options.fsType = mkOption {
       type = (nullOr str);
       default = null;
@@ -214,7 +214,7 @@
       default = null;
     };
     options.sds = mkOption {
-      type = (nullOr ConsulGatewayTlsSdsConfig);
+      type = (nullOr ConsulGatewayTlssdsConfig);
       default = null;
     };
     options.tlsMaxVersion = mkOption {
@@ -226,7 +226,7 @@
       default = null;
     };
   });
-  _module.types.ConsulGatewayTlsSdsConfig = with lib; with config._module.types; with lib.types; submodule ({
+  _module.types.ConsulGatewayTlssdsConfig = with lib; with config._module.types; with lib.types; submodule ({
     options.certResource = mkOption {
       type = (nullOr str);
       default = null;
@@ -1618,7 +1618,7 @@
       default = null;
     };
     options.mountOptions = mkOption {
-      type = (nullOr CSIMountOptions);
+      type = (nullOr CsiMountOptions);
       default = null;
     };
     options.name = mkOption {
@@ -1721,15 +1721,15 @@
     // (if attrs ? Weight && attrs.Weight != null then { weight = attrs.Weight; } else {})
   );
 
-  # Convert a CsimountOptions Nix module into a JSON object.
-  _module.transformers.CsimountOptions.toJSON = with lib; with config._module.transformers; attrs: if !(builtins.isAttrs attrs) then null else (
+  # Convert a CsiMountOptions Nix module into a JSON object.
+  _module.transformers.CsiMountOptions.toJSON = with lib; with config._module.transformers; attrs: if !(builtins.isAttrs attrs) then null else (
     {}
     // (if attrs ? fsType && attrs.fsType != null then { FSType = attrs.fsType; } else {})
     // (if attrs ? mountFlags && attrs.mountFlags != null then { MountFlags = attrs.mountFlags; } else {})
   );
 
-  # Convert a CsimountOptions JSON object into a Nix module.
-  _module.transformers.CsimountOptions.fromJSON = with lib; with config._module.transformers; attrs: (
+  # Convert a CsiMountOptions JSON object into a Nix module.
+  _module.transformers.CsiMountOptions.fromJSON = with lib; with config._module.transformers; attrs: (
     {}
     // (if attrs ? FSType && attrs.FSType != null then { fsType = attrs.FSType; } else {})
     // (if attrs ? MountFlags && attrs.MountFlags != null then { mountFlags = attrs.MountFlags; } else {})
@@ -1910,7 +1910,7 @@
     {}
     // (if attrs ? cipherSuites && attrs.cipherSuites != null then { CipherSuites = attrs.cipherSuites; } else {})
     // (if attrs ? enabled && attrs.enabled != null then { Enabled = attrs.enabled; } else {})
-    // (if attrs ? sds && attrs.sds != null then { SDS = ConsulGatewayTlsSdsConfig.toJSON attrs.sds; } else {})
+    // (if attrs ? sds && attrs.sds != null then { SDS = ConsulGatewayTlssdsConfig.toJSON attrs.sds; } else {})
     // (if attrs ? tlsMaxVersion && attrs.tlsMaxVersion != null then { TLSMaxVersion = attrs.tlsMaxVersion; } else {})
     // (if attrs ? tlsMinVersion && attrs.tlsMinVersion != null then { TLSMinVersion = attrs.tlsMinVersion; } else {})
   );
@@ -1920,20 +1920,20 @@
     {}
     // (if attrs ? CipherSuites && attrs.CipherSuites != null then { cipherSuites = attrs.CipherSuites; } else {})
     // (if attrs ? Enabled && attrs.Enabled != null then { enabled = attrs.Enabled; } else {})
-    // (if attrs ? SDS && attrs.SDS != null then { sds = ConsulGatewayTlsSdsConfig.fromJSON attrs.SDS; } else {})
+    // (if attrs ? SDS && attrs.SDS != null then { sds = ConsulGatewayTlssdsConfig.fromJSON attrs.SDS; } else {})
     // (if attrs ? TLSMaxVersion && attrs.TLSMaxVersion != null then { tlsMaxVersion = attrs.TLSMaxVersion; } else {})
     // (if attrs ? TLSMinVersion && attrs.TLSMinVersion != null then { tlsMinVersion = attrs.TLSMinVersion; } else {})
   );
 
-  # Convert a ConsulGatewayTlsSdsConfig Nix module into a JSON object.
-  _module.transformers.ConsulGatewayTlsSdsConfig.toJSON = with lib; with config._module.transformers; attrs: if !(builtins.isAttrs attrs) then null else (
+  # Convert a ConsulGatewayTlssdsConfig Nix module into a JSON object.
+  _module.transformers.ConsulGatewayTlssdsConfig.toJSON = with lib; with config._module.transformers; attrs: if !(builtins.isAttrs attrs) then null else (
     {}
     // (if attrs ? certResource && attrs.certResource != null then { CertResource = attrs.certResource; } else {})
     // (if attrs ? clusterName && attrs.clusterName != null then { ClusterName = attrs.clusterName; } else {})
   );
 
-  # Convert a ConsulGatewayTlsSdsConfig JSON object into a Nix module.
-  _module.transformers.ConsulGatewayTlsSdsConfig.fromJSON = with lib; with config._module.transformers; attrs: (
+  # Convert a ConsulGatewayTlssdsConfig JSON object into a Nix module.
+  _module.transformers.ConsulGatewayTlssdsConfig.fromJSON = with lib; with config._module.transformers; attrs: (
     {}
     // (if attrs ? CertResource && attrs.CertResource != null then { certResource = attrs.CertResource; } else {})
     // (if attrs ? ClusterName && attrs.ClusterName != null then { clusterName = attrs.ClusterName; } else {})
@@ -3036,7 +3036,7 @@
     {}
     // (if attrs ? accessMode && attrs.accessMode != null then { AccessMode = attrs.accessMode; } else {})
     // (if attrs ? attachmentMode && attrs.attachmentMode != null then { AttachmentMode = attrs.attachmentMode; } else {})
-    // (if attrs ? mountOptions && attrs.mountOptions != null then { MountOptions = CsimountOptions.toJSON attrs.mountOptions; } else {})
+    // (if attrs ? mountOptions && attrs.mountOptions != null then { MountOptions = CsiMountOptions.toJSON attrs.mountOptions; } else {})
     // (if attrs ? name && attrs.name != null then { Name = attrs.name; } else {})
     // (if attrs ? perAlloc && attrs.perAlloc != null then { PerAlloc = attrs.perAlloc; } else {})
     // (if attrs ? readOnly && attrs.readOnly != null then { ReadOnly = attrs.readOnly; } else {})
@@ -3049,7 +3049,7 @@
     {}
     // (if attrs ? AccessMode && attrs.AccessMode != null then { accessMode = attrs.AccessMode; } else {})
     // (if attrs ? AttachmentMode && attrs.AttachmentMode != null then { attachmentMode = attrs.AttachmentMode; } else {})
-    // (if attrs ? MountOptions && attrs.MountOptions != null then { mountOptions = CsimountOptions.fromJSON attrs.MountOptions; } else {})
+    // (if attrs ? MountOptions && attrs.MountOptions != null then { mountOptions = CsiMountOptions.fromJSON attrs.MountOptions; } else {})
     // (if attrs ? Name && attrs.Name != null then { name = attrs.Name; } else {})
     // (if attrs ? PerAlloc && attrs.PerAlloc != null then { perAlloc = attrs.PerAlloc; } else {})
     // (if attrs ? ReadOnly && attrs.ReadOnly != null then { readOnly = attrs.ReadOnly; } else {})
