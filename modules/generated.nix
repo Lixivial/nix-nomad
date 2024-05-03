@@ -472,7 +472,7 @@
       default = null;
     };
   });
-  _module.types.Dnsconfig = with lib; with config._module.types; with lib.types; submodule ({
+  _module.types.DnsConfig = with lib; with config._module.types; with lib.types; submodule ({
     options.options = mkOption {
       type = (nullOr (listOf str));
       default = null;
@@ -2165,16 +2165,16 @@
     // (if attrs ? MeshGateway && attrs.MeshGateway != null then { meshGateway = ConsulMeshGateway.fromJSON attrs.MeshGateway; } else {})
   );
 
-  # Convert a Dnsconfig Nix module into a JSON object.
-  _module.transformers.Dnsconfig.toJSON = with lib; with config._module.transformers; attrs: if !(builtins.isAttrs attrs) then null else (
+  # Convert a DnsConfig Nix module into a JSON object.
+  _module.transformers.DnsConfig.toJSON = with lib; with config._module.transformers; attrs: if !(builtins.isAttrs attrs) then null else (
     {}
     // (if attrs ? options && attrs.options != null then { Options = attrs.options; } else {})
     // (if attrs ? searches && attrs.searches != null then { Searches = attrs.searches; } else {})
     // (if attrs ? servers && attrs.servers != null then { Servers = attrs.servers; } else {})
   );
 
-  # Convert a Dnsconfig JSON object into a Nix module.
-  _module.transformers.Dnsconfig.fromJSON = with lib; with config._module.transformers; attrs: (
+  # Convert a DnsConfig JSON object into a Nix module.
+  _module.transformers.DnsConfig.fromJSON = with lib; with config._module.transformers; attrs: (
     {}
     // (if attrs ? Options && attrs.Options != null then { options = attrs.Options; } else {})
     // (if attrs ? Searches && attrs.Searches != null then { searches = attrs.Searches; } else {})
@@ -2382,7 +2382,7 @@
     {}
     // (if attrs ? cidr && attrs.cidr != null then { CIDR = attrs.cidr; } else {})
     // (if attrs ? device && attrs.device != null then { Device = attrs.device; } else {})
-    // (if attrs ? dns && attrs.dns != null then { DNS = Dnsconfig.toJSON attrs.dns; } else {})
+    // (if attrs ? dns && attrs.dns != null then { DNS = DnsConfig.toJSON attrs.dns; } else {})
     // (if attrs ? hostname && attrs.hostname != null then { Hostname = attrs.hostname; } else {})
     // (if attrs ? ip && attrs.ip != null then { IP = attrs.ip; } else {})
     // (if attrs ? mbits && attrs.mbits != null then { MBits = attrs.mbits; } else {})
@@ -2396,7 +2396,7 @@
     {}
     // (if attrs ? CIDR && attrs.CIDR != null then { cidr = attrs.CIDR; } else {})
     // (if attrs ? Device && attrs.Device != null then { device = attrs.Device; } else {})
-    // (if attrs ? DNS && attrs.DNS != null then { dns = Dnsconfig.fromJSON attrs.DNS; } else {})
+    // (if attrs ? DNS && attrs.DNS != null then { dns = DnsConfig.fromJSON attrs.DNS; } else {})
     // (if attrs ? Hostname && attrs.Hostname != null then { hostname = attrs.Hostname; } else {})
     // (if attrs ? IP && attrs.IP != null then { ip = attrs.IP; } else {})
     // (if attrs ? MBits && attrs.MBits != null then { mbits = attrs.MBits; } else {})
