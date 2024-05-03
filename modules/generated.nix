@@ -714,7 +714,7 @@
       default = null;
     };
     options.dns = mkOption {
-      type = (nullOr DNSConfig);
+      type = (nullOr DnsConfig);
       default = null;
     };
     options.hostname = mkOption {
