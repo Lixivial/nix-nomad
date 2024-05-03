@@ -214,7 +214,7 @@
       default = null;
     };
     options.sds = mkOption {
-      type = (nullOr ConsulGatewayTLSSDSConfig);
+      type = (nullOr ConsulGatewayTlsSdsConfig);
       default = null;
     };
     options.tlsMaxVersion = mkOption {
@@ -226,7 +226,7 @@
       default = null;
     };
   });
-  _module.types.ConsulGatewayTlssdsconfig = with lib; with config._module.types; with lib.types; submodule ({
+  _module.types.ConsulGatewayTlsSdsConfig = with lib; with config._module.types; with lib.types; submodule ({
     options.certResource = mkOption {
       type = (nullOr str);
       default = null;
@@ -236,7 +236,7 @@
       default = null;
     };
   });
-  _module.types.ConsulHttpheaderModifiers = with lib; with config._module.types; with lib.types; submodule ({
+  _module.types.ConsulHttpHeaderModifiers = with lib; with config._module.types; with lib.types; submodule ({
     options.add = mkOption {
       type = (nullOr (attrsOf str));
       default = null;
@@ -296,11 +296,11 @@
       default = null;
     };
     options.requestHeaders = mkOption {
-      type = (nullOr ConsulHTTPHeaderModifiers);
+      type = (nullOr ConsulHttpHeaderModifiers);
       default = null;
     };
     options.responseHeaders = mkOption {
-      type = (nullOr ConsulHTTPHeaderModifiers);
+      type = (nullOr ConsulHttpHeaderModifiers);
       default = null;
     };
     options.tls = mkOption {
@@ -1910,7 +1910,7 @@
     {}
     // (if attrs ? cipherSuites && attrs.cipherSuites != null then { CipherSuites = attrs.cipherSuites; } else {})
     // (if attrs ? enabled && attrs.enabled != null then { Enabled = attrs.enabled; } else {})
-    // (if attrs ? sds && attrs.sds != null then { SDS = ConsulGatewayTlssdsconfig.toJSON attrs.sds; } else {})
+    // (if attrs ? sds && attrs.sds != null then { SDS = ConsulGatewayTlsSdsConfig.toJSON attrs.sds; } else {})
     // (if attrs ? tlsMaxVersion && attrs.tlsMaxVersion != null then { TLSMaxVersion = attrs.tlsMaxVersion; } else {})
     // (if attrs ? tlsMinVersion && attrs.tlsMinVersion != null then { TLSMinVersion = attrs.tlsMinVersion; } else {})
   );
@@ -1920,35 +1920,35 @@
     {}
     // (if attrs ? CipherSuites && attrs.CipherSuites != null then { cipherSuites = attrs.CipherSuites; } else {})
     // (if attrs ? Enabled && attrs.Enabled != null then { enabled = attrs.Enabled; } else {})
-    // (if attrs ? SDS && attrs.SDS != null then { sds = ConsulGatewayTlssdsconfig.fromJSON attrs.SDS; } else {})
+    // (if attrs ? SDS && attrs.SDS != null then { sds = ConsulGatewayTlsSdsConfig.fromJSON attrs.SDS; } else {})
     // (if attrs ? TLSMaxVersion && attrs.TLSMaxVersion != null then { tlsMaxVersion = attrs.TLSMaxVersion; } else {})
     // (if attrs ? TLSMinVersion && attrs.TLSMinVersion != null then { tlsMinVersion = attrs.TLSMinVersion; } else {})
   );
 
-  # Convert a ConsulGatewayTlssdsconfig Nix module into a JSON object.
-  _module.transformers.ConsulGatewayTlssdsconfig.toJSON = with lib; with config._module.transformers; attrs: if !(builtins.isAttrs attrs) then null else (
+  # Convert a ConsulGatewayTlsSdsConfig Nix module into a JSON object.
+  _module.transformers.ConsulGatewayTlsSdsConfig.toJSON = with lib; with config._module.transformers; attrs: if !(builtins.isAttrs attrs) then null else (
     {}
     // (if attrs ? certResource && attrs.certResource != null then { CertResource = attrs.certResource; } else {})
     // (if attrs ? clusterName && attrs.clusterName != null then { ClusterName = attrs.clusterName; } else {})
   );
 
-  # Convert a ConsulGatewayTlssdsconfig JSON object into a Nix module.
-  _module.transformers.ConsulGatewayTlssdsconfig.fromJSON = with lib; with config._module.transformers; attrs: (
+  # Convert a ConsulGatewayTlsSdsConfig JSON object into a Nix module.
+  _module.transformers.ConsulGatewayTlsSdsConfig.fromJSON = with lib; with config._module.transformers; attrs: (
     {}
     // (if attrs ? CertResource && attrs.CertResource != null then { certResource = attrs.CertResource; } else {})
     // (if attrs ? ClusterName && attrs.ClusterName != null then { clusterName = attrs.ClusterName; } else {})
   );
 
-  # Convert a ConsulHttpheaderModifiers Nix module into a JSON object.
-  _module.transformers.ConsulHttpheaderModifiers.toJSON = with lib; with config._module.transformers; attrs: if !(builtins.isAttrs attrs) then null else (
+  # Convert a ConsulHttpHeaderModifiers Nix module into a JSON object.
+  _module.transformers.ConsulHttpHeaderModifiers.toJSON = with lib; with config._module.transformers; attrs: if !(builtins.isAttrs attrs) then null else (
     {}
     // (if attrs ? add && attrs.add != null then { Add = attrs.add; } else {})
     // (if attrs ? remove && attrs.remove != null then { Remove = attrs.remove; } else {})
     // (if attrs ? set && attrs.set != null then { Set = attrs.set; } else {})
   );
 
-  # Convert a ConsulHttpheaderModifiers JSON object into a Nix module.
-  _module.transformers.ConsulHttpheaderModifiers.fromJSON = with lib; with config._module.transformers; attrs: (
+  # Convert a ConsulHttpHeaderModifiers JSON object into a Nix module.
+  _module.transformers.ConsulHttpHeaderModifiers.fromJSON = with lib; with config._module.transformers; attrs: (
     {}
     // (if attrs ? Add && attrs.Add != null then { add = attrs.Add; } else {})
     // (if attrs ? Remove && attrs.Remove != null then { remove = attrs.Remove; } else {})
@@ -1993,8 +1993,8 @@
     // (if attrs ? maxConnections && attrs.maxConnections != null then { MaxConnections = attrs.maxConnections; } else {})
     // (if attrs ? maxPendingRequests && attrs.maxPendingRequests != null then { MaxPendingRequests = attrs.maxPendingRequests; } else {})
     // (if attrs ? name && attrs.name != null then { Name = attrs.name; } else {})
-    // (if attrs ? requestHeaders && attrs.requestHeaders != null then { RequestHeaders = ConsulHttpheaderModifiers.toJSON attrs.requestHeaders; } else {})
-    // (if attrs ? responseHeaders && attrs.responseHeaders != null then { ResponseHeaders = ConsulHttpheaderModifiers.toJSON attrs.responseHeaders; } else {})
+    // (if attrs ? requestHeaders && attrs.requestHeaders != null then { RequestHeaders = ConsulHttpHeaderModifiers.toJSON attrs.requestHeaders; } else {})
+    // (if attrs ? responseHeaders && attrs.responseHeaders != null then { ResponseHeaders = ConsulHttpHeaderModifiers.toJSON attrs.responseHeaders; } else {})
     // (if attrs ? tls && attrs.tls != null then { TLS = ConsulGatewayTlsConfig.toJSON attrs.tls; } else {})
   );
 
@@ -2006,8 +2006,8 @@
     // (if attrs ? MaxConnections && attrs.MaxConnections != null then { maxConnections = attrs.MaxConnections; } else {})
     // (if attrs ? MaxPendingRequests && attrs.MaxPendingRequests != null then { maxPendingRequests = attrs.MaxPendingRequests; } else {})
     // (if attrs ? Name && attrs.Name != null then { name = attrs.Name; } else {})
-    // (if attrs ? RequestHeaders && attrs.RequestHeaders != null then { requestHeaders = ConsulHttpheaderModifiers.fromJSON attrs.RequestHeaders; } else {})
-    // (if attrs ? ResponseHeaders && attrs.ResponseHeaders != null then { responseHeaders = ConsulHttpheaderModifiers.fromJSON attrs.ResponseHeaders; } else {})
+    // (if attrs ? RequestHeaders && attrs.RequestHeaders != null then { requestHeaders = ConsulHttpHeaderModifiers.fromJSON attrs.RequestHeaders; } else {})
+    // (if attrs ? ResponseHeaders && attrs.ResponseHeaders != null then { responseHeaders = ConsulHttpHeaderModifiers.fromJSON attrs.ResponseHeaders; } else {})
     // (if attrs ? TLS && attrs.TLS != null then { tls = ConsulGatewayTlsConfig.fromJSON attrs.TLS; } else {})
   );
 
