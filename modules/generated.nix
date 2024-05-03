@@ -1204,7 +1204,7 @@
       default = null;
     };
     options.csiPlugin = mkOption {
-      type = (nullOr TaskCSIPluginConfig);
+      type = (nullOr TaskCsiPluginConfig);
       default = null;
     };
     options.dispatchPayload = mkOption {
@@ -1320,7 +1320,7 @@
       default = null;
     };
   });
-  _module.types.TaskCsipluginConfig = with lib; with config._module.types; with lib.types; submodule ({
+  _module.types.TaskCsiPluginConfig = with lib; with config._module.types; with lib.types; submodule ({
     options.healthTimeout = mkOption {
       type = (nullOr int);
       default = null;
@@ -2746,7 +2746,7 @@
     // (if attrs ? config && attrs.config != null then { Config = attrs.config; } else {})
     // (if attrs ? constraints && builtins.isList attrs.constraints then { Constraints = builtins.map Constraint.toJSON attrs.constraints; } else {})
     // (if attrs ? consul && attrs.consul != null then { Consul = Consul.toJSON attrs.consul; } else {})
-    // (if attrs ? csiPlugin && attrs.csiPlugin != null then { CSIPluginConfig = TaskCsipluginConfig.toJSON attrs.csiPlugin; } else {})
+    // (if attrs ? csiPlugin && attrs.csiPlugin != null then { CSIPluginConfig = TaskCsiPluginConfig.toJSON attrs.csiPlugin; } else {})
     // (if attrs ? dispatchPayload && attrs.dispatchPayload != null then { DispatchPayload = DispatchPayloadConfig.toJSON attrs.dispatchPayload; } else {})
     // (if attrs ? driver && attrs.driver != null then { Driver = attrs.driver; } else {})
     // (if attrs ? env && attrs.env != null then { Env = attrs.env; } else {})
@@ -2779,7 +2779,7 @@
     // (if attrs ? Config && attrs.Config != null then { config = attrs.Config; } else {})
     // (if attrs ? Constraints && builtins.isList attrs.Constraints then { constraints = builtins.map Constraint.fromJSON attrs.Constraints; } else {})
     // (if attrs ? Consul && attrs.Consul != null then { consul = Consul.fromJSON attrs.Consul; } else {})
-    // (if attrs ? CSIPluginConfig && attrs.CSIPluginConfig != null then { csiPlugin = TaskCsipluginConfig.fromJSON attrs.CSIPluginConfig; } else {})
+    // (if attrs ? CSIPluginConfig && attrs.CSIPluginConfig != null then { csiPlugin = TaskCsiPluginConfig.fromJSON attrs.CSIPluginConfig; } else {})
     // (if attrs ? DispatchPayload && attrs.DispatchPayload != null then { dispatchPayload = DispatchPayloadConfig.fromJSON attrs.DispatchPayload; } else {})
     // (if attrs ? Driver && attrs.Driver != null then { driver = attrs.Driver; } else {})
     // (if attrs ? Env && attrs.Env != null then { env = attrs.Env; } else {})
@@ -2825,8 +2825,8 @@
     // (if attrs ? GetterSource && attrs.GetterSource != null then { source = attrs.GetterSource; } else {})
   );
 
-  # Convert a TaskCsipluginConfig Nix module into a JSON object.
-  _module.transformers.TaskCsipluginConfig.toJSON = with lib; with config._module.transformers; attrs: if !(builtins.isAttrs attrs) then null else (
+  # Convert a TaskCsiPluginConfig Nix module into a JSON object.
+  _module.transformers.TaskCsiPluginConfig.toJSON = with lib; with config._module.transformers; attrs: if !(builtins.isAttrs attrs) then null else (
     {}
     // (if attrs ? healthTimeout && attrs.healthTimeout != null then { HealthTimeout = attrs.healthTimeout; } else {})
     // (if attrs ? id && attrs.id != null then { ID = attrs.id; } else {})
@@ -2835,8 +2835,8 @@
     // (if attrs ? type && attrs.type != null then { Type = attrs.type; } else {})
   );
 
-  # Convert a TaskCsipluginConfig JSON object into a Nix module.
-  _module.transformers.TaskCsipluginConfig.fromJSON = with lib; with config._module.transformers; attrs: (
+  # Convert a TaskCsiPluginConfig JSON object into a Nix module.
+  _module.transformers.TaskCsiPluginConfig.fromJSON = with lib; with config._module.transformers; attrs: (
     {}
     // (if attrs ? HealthTimeout && attrs.HealthTimeout != null then { healthTimeout = attrs.HealthTimeout; } else {})
     // (if attrs ? ID && attrs.ID != null then { id = attrs.ID; } else {})
