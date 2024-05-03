@@ -204,7 +204,7 @@
       default = null;
     };
   });
-  _module.types.ConsulGatewayTlsconfig = with lib; with config._module.types; with lib.types; submodule ({
+  _module.types.ConsulGatewayTlsConfig = with lib; with config._module.types; with lib.types; submodule ({
     options.cipherSuites = mkOption {
       type = (nullOr (listOf str));
       default = null;
@@ -256,7 +256,7 @@
       default = null;
     };
     options.tls = mkOption {
-      type = (nullOr ConsulGatewayTLSConfig);
+      type = (nullOr ConsulGatewayTlsConfig);
       default = null;
     };
   });
@@ -304,7 +304,7 @@
       default = null;
     };
     options.tls = mkOption {
-      type = (nullOr ConsulGatewayTLSConfig);
+      type = (nullOr ConsulGatewayTlsConfig);
       default = null;
     };
   });
@@ -1905,8 +1905,8 @@
     // (if attrs ? EnvoyGatewayNoDefaultBind && attrs.EnvoyGatewayNoDefaultBind != null then { envoyGatewayNoDefaultBind = attrs.EnvoyGatewayNoDefaultBind; } else {})
   );
 
-  # Convert a ConsulGatewayTlsconfig Nix module into a JSON object.
-  _module.transformers.ConsulGatewayTlsconfig.toJSON = with lib; with config._module.transformers; attrs: if !(builtins.isAttrs attrs) then null else (
+  # Convert a ConsulGatewayTlsConfig Nix module into a JSON object.
+  _module.transformers.ConsulGatewayTlsConfig.toJSON = with lib; with config._module.transformers; attrs: if !(builtins.isAttrs attrs) then null else (
     {}
     // (if attrs ? cipherSuites && attrs.cipherSuites != null then { CipherSuites = attrs.cipherSuites; } else {})
     // (if attrs ? enabled && attrs.enabled != null then { Enabled = attrs.enabled; } else {})
@@ -1915,8 +1915,8 @@
     // (if attrs ? tlsMinVersion && attrs.tlsMinVersion != null then { TLSMinVersion = attrs.tlsMinVersion; } else {})
   );
 
-  # Convert a ConsulGatewayTlsconfig JSON object into a Nix module.
-  _module.transformers.ConsulGatewayTlsconfig.fromJSON = with lib; with config._module.transformers; attrs: (
+  # Convert a ConsulGatewayTlsConfig JSON object into a Nix module.
+  _module.transformers.ConsulGatewayTlsConfig.fromJSON = with lib; with config._module.transformers; attrs: (
     {}
     // (if attrs ? CipherSuites && attrs.CipherSuites != null then { cipherSuites = attrs.CipherSuites; } else {})
     // (if attrs ? Enabled && attrs.Enabled != null then { enabled = attrs.Enabled; } else {})
@@ -1959,14 +1959,14 @@
   _module.transformers.ConsulIngressConfigEntry.toJSON = with lib; with config._module.transformers; attrs: if !(builtins.isAttrs attrs) then null else (
     {}
     // (if attrs ? listeners && builtins.isList attrs.listeners then { Listeners = builtins.map ConsulIngressListener.toJSON attrs.listeners; } else {})
-    // (if attrs ? tls && attrs.tls != null then { TLS = ConsulGatewayTlsconfig.toJSON attrs.tls; } else {})
+    // (if attrs ? tls && attrs.tls != null then { TLS = ConsulGatewayTlsConfig.toJSON attrs.tls; } else {})
   );
 
   # Convert a ConsulIngressConfigEntry JSON object into a Nix module.
   _module.transformers.ConsulIngressConfigEntry.fromJSON = with lib; with config._module.transformers; attrs: (
     {}
     // (if attrs ? Listeners && builtins.isList attrs.Listeners then { listeners = builtins.map ConsulIngressListener.fromJSON attrs.Listeners; } else {})
-    // (if attrs ? TLS && attrs.TLS != null then { tls = ConsulGatewayTlsconfig.fromJSON attrs.TLS; } else {})
+    // (if attrs ? TLS && attrs.TLS != null then { tls = ConsulGatewayTlsConfig.fromJSON attrs.TLS; } else {})
   );
 
   # Convert a ConsulIngressListener Nix module into a JSON object.
@@ -1995,7 +1995,7 @@
     // (if attrs ? name && attrs.name != null then { Name = attrs.name; } else {})
     // (if attrs ? requestHeaders && attrs.requestHeaders != null then { RequestHeaders = ConsulHttpheaderModifiers.toJSON attrs.requestHeaders; } else {})
     // (if attrs ? responseHeaders && attrs.responseHeaders != null then { ResponseHeaders = ConsulHttpheaderModifiers.toJSON attrs.responseHeaders; } else {})
-    // (if attrs ? tls && attrs.tls != null then { TLS = ConsulGatewayTlsconfig.toJSON attrs.tls; } else {})
+    // (if attrs ? tls && attrs.tls != null then { TLS = ConsulGatewayTlsConfig.toJSON attrs.tls; } else {})
   );
 
   # Convert a ConsulIngressService JSON object into a Nix module.
@@ -2008,7 +2008,7 @@
     // (if attrs ? Name && attrs.Name != null then { name = attrs.Name; } else {})
     // (if attrs ? RequestHeaders && attrs.RequestHeaders != null then { requestHeaders = ConsulHttpheaderModifiers.fromJSON attrs.RequestHeaders; } else {})
     // (if attrs ? ResponseHeaders && attrs.ResponseHeaders != null then { responseHeaders = ConsulHttpheaderModifiers.fromJSON attrs.ResponseHeaders; } else {})
-    // (if attrs ? TLS && attrs.TLS != null then { tls = ConsulGatewayTlsconfig.fromJSON attrs.TLS; } else {})
+    // (if attrs ? TLS && attrs.TLS != null then { tls = ConsulGatewayTlsConfig.fromJSON attrs.TLS; } else {})
   );
 
   # Convert a ConsulLinkedService Nix module into a JSON object.
