@@ -698,7 +698,7 @@
       default = null;
     };
   });
-  _module.types.Numaresource = with lib; with config._module.types; with lib.types; submodule ({
+  _module.types.NumaResource = with lib; with config._module.types; with lib.types; submodule ({
     options.affinity = mkOption {
       type = (nullOr str);
       default = null;
@@ -878,7 +878,7 @@
       default = null;
     };
     options.numa = mkOption {
-      type = (nullOr NUMAResource);
+      type = (nullOr NumaResource);
       default = null;
     };
   });
@@ -2365,14 +2365,14 @@
     // (if attrs ? OnFailure && attrs.OnFailure != null then { onFailure = attrs.OnFailure; } else {})
   );
 
-  # Convert a Numaresource Nix module into a JSON object.
-  _module.transformers.Numaresource.toJSON = with lib; with config._module.transformers; attrs: if !(builtins.isAttrs attrs) then null else (
+  # Convert a NumaResource Nix module into a JSON object.
+  _module.transformers.NumaResource.toJSON = with lib; with config._module.transformers; attrs: if !(builtins.isAttrs attrs) then null else (
     {}
     // (if attrs ? affinity && attrs.affinity != null then { Affinity = attrs.affinity; } else {})
   );
 
-  # Convert a Numaresource JSON object into a Nix module.
-  _module.transformers.Numaresource.fromJSON = with lib; with config._module.transformers; attrs: (
+  # Convert a NumaResource JSON object into a Nix module.
+  _module.transformers.NumaResource.fromJSON = with lib; with config._module.transformers; attrs: (
     {}
     // (if attrs ? Affinity && attrs.Affinity != null then { affinity = attrs.Affinity; } else {})
   );
@@ -2510,7 +2510,7 @@
     // (if attrs ? memory && attrs.memory != null then { MemoryMB = attrs.memory; } else {})
     // (if attrs ? memoryMax && attrs.memoryMax != null then { MemoryMaxMB = attrs.memoryMax; } else {})
     // (if attrs ? networks && builtins.isList attrs.networks then { Networks = builtins.map NetworkResource.toJSON attrs.networks; } else {})
-    // (if attrs ? numa && attrs.numa != null then { NUMA = Numaresource.toJSON attrs.numa; } else {})
+    // (if attrs ? numa && attrs.numa != null then { NUMA = NumaResource.toJSON attrs.numa; } else {})
   );
 
   # Convert a Resources JSON object into a Nix module.
@@ -2524,7 +2524,7 @@
     // (if attrs ? MemoryMB && attrs.MemoryMB != null then { memory = attrs.MemoryMB; } else {})
     // (if attrs ? MemoryMaxMB && attrs.MemoryMaxMB != null then { memoryMax = attrs.MemoryMaxMB; } else {})
     // (if attrs ? Networks && builtins.isList attrs.Networks then { networks = builtins.map NetworkResource.fromJSON attrs.Networks; } else {})
-    // (if attrs ? NUMA && attrs.NUMA != null then { numa = Numaresource.fromJSON attrs.NUMA; } else {})
+    // (if attrs ? NUMA && attrs.NUMA != null then { numa = NumaResource.fromJSON attrs.NUMA; } else {})
   );
 
   # Convert a RestartPolicy Nix module into a JSON object.
